@@ -1,0 +1,13 @@
+version: '3.3'
+
+services:
+  # ---------------------------
+  # Start Team Three Sandbox
+  # ---------------------------
+  team-three-sandbox:
+    container_name: "team-three-sandbox"
+    hostname: "team-three-sandbox"
+    build: .
+    image: team-three-sandbox
+    ports:
+      - 8080:8080
