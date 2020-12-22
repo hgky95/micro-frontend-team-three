@@ -38,11 +38,12 @@ class Receipt extends HTMLElement {
     }
 
     updateTotal() {
-        this.dispatchEvent(new CustomEvent('team-three-total-value', {
+        this.total = Object.values(this.boughtProducts)
+            .map(item => item.unitPrice * item.quantity).reduce((a, b) => a + b, 0);
+
+        this.dispatchEvent(new CustomEvent('team-three-update-total', {
             bubbles: true,
-            "detail": {
-                "amount": parseInt(Object.values(this.boughtProducts).map(item => item.price).reduce((a, b) => a + b, 0))
-            }
+            detail: { 'amount': parseInt(this.total) }
         }));
     }
 
